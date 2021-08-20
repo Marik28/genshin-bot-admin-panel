@@ -13,3 +13,6 @@ createsuperuser:
 
 collectstatic:
 	cd web/app; python manage.py collectstatic
+
+run-prod:
+	cd web/app; gunicorn app.wsgi
