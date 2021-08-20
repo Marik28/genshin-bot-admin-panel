@@ -6,6 +6,11 @@ admin.site.register(CharacterImage)
 admin.site.register(Banner)
 
 
+class BannerInline(admin.StackedInline):
+    model = Banner
+    extra = 1
+
+
 class CharacterImageInline(admin.StackedInline):
     model = CharacterImage
     extra = 2
@@ -13,4 +18,4 @@ class CharacterImageInline(admin.StackedInline):
 
 @admin.register(Character)
 class Character(admin.ModelAdmin):
-    inlines = [CharacterImageInline]
+    inlines = [CharacterImageInline, BannerInline]
