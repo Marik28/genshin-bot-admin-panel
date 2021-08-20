@@ -15,7 +15,7 @@ createsuperuser:
 	cd web/app; python manage.py createsuperuser
 
 collectstatic:
-	cd web/app; python manage.py collectstatic
+	cd web/app; python manage.py collectstatic --noinput
 
 run-prod:
 	cd web/app; gunicorn app.wsgi
