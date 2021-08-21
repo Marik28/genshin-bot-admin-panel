@@ -10,9 +10,11 @@ class Character(models.Model):
     area = models.CharField(max_length=20)
 
     def __str__(self):
-        return self.name
+        return f"{self.name} ({self.rarity})"
 
     class Meta:
+        verbose_name = "Персонаж"
+        verbose_name_plural = "Персонажи"
         ordering = ["name"]
         db_table = "characters"
 
@@ -25,15 +27,19 @@ class Banner(models.Model):
         return self.name
 
     class Meta:
+        verbose_name = "Баннер"
+        verbose_name_plural = "Баннеры"
         db_table = "banners"
 
 
 class CharacterImage(models.Model):
-    link = models.TextField()
+    link = models.URLField(max_length=255)
     character = models.ForeignKey(Character, on_delete=models.RESTRICT)
 
     def __str__(self):
         return f"Изображение персонажа {self.character.name}"
 
     class Meta:
+        verbose_name = "Изображение персонажа"
+        verbose_name_plural = "Изображения персонажей"
         db_table = "character_images"
