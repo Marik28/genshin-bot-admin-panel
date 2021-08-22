@@ -23,10 +23,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# todo переделать
-DEBUG = os.getenv("DJANGO_DEBUG", False)
 
-ALLOWED_HOSTS = ['127.0.0.1', '135.125.191.18']
+DEBUG = os.getenv("DJANGO_DEBUG", "true").lower() == "true"
+
+# в переменной окружения хосты перечисляются через пробел
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", '127.0.0.1').split(" ")
 
 # Application definition
 
@@ -119,7 +120,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR.parent.parent / 'static'
+STATIC_ROOT = BASE_DIR / 'static'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
