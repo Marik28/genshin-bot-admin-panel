@@ -12,5 +12,5 @@ class CharacterImageInline(admin.StackedInline):
 
 
 @admin.register(Character)
-class Character(admin.ModelAdmin):
+class CharacterAdmin(admin.ModelAdmin):
     inlines = [CharacterImageInline]
