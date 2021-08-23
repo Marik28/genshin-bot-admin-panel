@@ -19,3 +19,4 @@ class CharacterImageInline(admin.StackedInline):
 class CharacterAdmin(admin.ModelAdmin):
     inlines = [CharacterImageInline]
     search_fields = ("name",)
+    list_filter = ("rarity",)
