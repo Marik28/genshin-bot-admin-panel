@@ -33,7 +33,7 @@ class Banner(models.Model):
 
 
 class CharacterImage(models.Model):
-    link = models.URLField(max_length=255)
+    link = models.URLField(max_length=500)
     character = models.ForeignKey(Character, on_delete=models.RESTRICT)
 
     def __str__(self):
