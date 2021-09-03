@@ -43,3 +43,17 @@ class CharacterImage(models.Model):
         verbose_name = "Изображение персонажа"
         verbose_name_plural = "Изображения персонажей"
         db_table = "character_images"
+
+
+class BotUser(models.Model):
+    id = models.IntegerField(primary_key=True)
+    username = models.CharField(max_length=32, null=False, blank=False)
+    characters = models.ManyToManyField(Character, db_table="user_and_character_association")
+
+    class Meta:
+        verbose_name = "Пользователь ботом"
+        verbose_name_plural = "Пользователи ботом"
+        db_table = "bot_users"
+
+    def __str__(self):
+        return f"{self.username} - {self.id}"

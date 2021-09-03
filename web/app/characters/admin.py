@@ -1,8 +1,13 @@
 from django.contrib import admin
 
-from .models import Character, CharacterImage, Banner
+from .models import Character, CharacterImage, Banner, BotUser
 
 admin.site.register(CharacterImage)
+
+
+@admin.register(BotUser)
+class BotUserAdmin(admin.ModelAdmin):
+    filter_horizontal = ("characters",)
 
 
 @admin.register(Banner)
